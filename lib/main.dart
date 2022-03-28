@@ -30,9 +30,19 @@ class MyApp extends StatelessWidget {
 }
 
 
-class FirstScreen extends StatelessWidget {
+class FirstScreen extends StatefulWidget {
+  
+  @override
+ _FirstScreenState createState() => _FirstScreenState();
 
-  Widget build(BuildContext context) {
+
+  }
+
+class _FirstScreenState extends State<FirstScreen> {
+  String? language;
+
+  @override
+   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -55,26 +65,42 @@ class FirstScreen extends StatelessWidget {
         ],
       ),
       body: Container(
-        child: Text('Hi', style: TextStyle(fontSize: 40)),
-        decoration:  BoxDecoration(
-          color: Colors.red,
-          shape: BoxShape.rectangle,
-          border: Border.all(color: Colors.black26, width: 3), 
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: const [
-            BoxShadow(
-              color: Colors.lightBlue,
-              offset: Offset(3,6),
-              blurRadius: 10,
-            ),
-            BoxShadow(
-              color: Colors.red,
-              offset: Offset(-2, -4),
-              blurRadius: 10
-            )
-          ]),
-        margin: EdgeInsets.all(10)
-        ),
+        child: Column(
+          children: <Widget>[
+            ElevatedButton(
+              onPressed: () {}, 
+              child: Text('Elevated Button')
+              ),
+              TextButton(
+                onPressed:(){}, 
+                child: Text('Text Button')
+                ),
+              OutlineButton(
+                onPressed: () {},
+                child: Text('Outliner Button'),
+                ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.send),
+                tooltip: 'Icrease.volume by 10'
+                ),
+              DropdownButton<String>(
+                items: <DropdownMenuItem<String>> [
+                  DropdownMenuItem<String>(child: Text('Dart'), value: 'Dart',),
+                  DropdownMenuItem<String>(child: Text('Kotlin'), value: 'DarKotlin',),
+                  DropdownMenuItem<String>(child: Text('Swift'), value: 'Swift',)
+                ], value: language,
+                hint: Text('Select Language'),
+                onChanged: (String? value) {
+                  setState(() {
+                    language = value;
+                  });
+                })
+
+
+          ],
+          ),
+      )
     );
     }
 }
