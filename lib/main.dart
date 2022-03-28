@@ -54,15 +54,29 @@ class FirstScreen extends StatelessWidget {
           
         ],
       ),
-      body: Center(
-        child: Text('Hello World!')
+      body: Container(
+        child: Text('Hi', style: TextStyle(fontSize: 40)),
+        decoration:  BoxDecoration(
+          color: Colors.red,
+          shape: BoxShape.rectangle,
+          border: Border.all(color: Colors.black26, width: 3), 
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.lightBlue,
+              offset: Offset(3,6),
+              blurRadius: 10,
+            ),
+            BoxShadow(
+              color: Colors.red,
+              offset: Offset(-2, -4),
+              blurRadius: 10
+            )
+          ]),
+        margin: EdgeInsets.all(10)
         ),
-        floatingActionButton: FloatingActionButton(onPressed: () {
-          
-        },
-        child: Icon(Icons.add),)
     );
-  }
+    }
 }
 
 // class MyHomePage extends StatefulWidget {
