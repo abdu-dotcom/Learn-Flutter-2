@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       home: FirstScreen(),
@@ -21,71 +20,50 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
 
-  
   @override
- _FirstScreenState createState() => _FirstScreenState();
-
-
-  }
-
-class _FirstScreenState extends State<FirstScreen> {
-  TextEditingController _controller = TextEditingController();
-
-  @override
-  void dispose() {
-  _controller.dispose();
-  super.dispose();
+  _FirstScreenState createState() => _FirstScreenState();
 }
 
+class _FirstScreenState extends State<FirstScreen> {
+  bool lightOn = false;
+
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          onPressed: () {},
-        ),
-        title: const Text('First Screen'),
-        actions: <Widget>[
-          IconButton( 
-            icon: const Icon( 
-              Icons.search,
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(
+              Icons.menu,
               color: Colors.white,
             ),
             onPressed: () {},
           ),
-          
-        ],
-      ),
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            TextField(
-            controller: _controller,
-            decoration: InputDecoration(
-              hintText: 'Write your name in here',
-              labelText: 'Your Name',
-             ),
-           ),
-           SizedBox(height: 20),
-           ElevatedButton(onPressed: () {
-             showDialog(context: context, builder: (context) {
-               return AlertDialog(
-                 content:  Text('Hello, ${_controller.text} '),
-               );
-             });
-           }, child: Text('Submit'))
+          title: const Text('First Screen'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {},
+            ),
           ],
-          ),
-      )
-    );
-    }
-}
+        ),
+        body: Switch(
+          value: lightOn,
+          onChanged: (bool value) {
+            setState(() {
+              lightOn = value;
+            });
 
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(lightOn ? 'Light On' : 'Light Off'),
+              duration: Duration(seconds: 1),
+            ));
+          },
+        ));
+  }
+}
