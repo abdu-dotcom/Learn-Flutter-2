@@ -28,81 +28,40 @@ class FirstScreen extends StatefulWidget {
 }
 
 class _FirstScreenState extends State<FirstScreen> {
-  String? language;
+  bool agree = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          onPressed: () {},
-        ),
-        title: const Text('First Screen'),
-        actions: <Widget>[
-          IconButton(
+        appBar: AppBar(
+          leading: IconButton(
             icon: const Icon(
-              Icons.search,
+              Icons.menu,
               color: Colors.white,
             ),
             onPressed: () {},
           ),
-        ],
-      ),
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTile(
-            leading: Radio<String>(
-              value: 'Dart',
-              groupValue: language,
-              onChanged: (String? value) {
-                setState(() {
-                  language = value;
-                  showSnackBar();
-                });
-              },
+          title: const Text('First Screen'),
+          actions: <Widget>[
+            IconButton(
+              icon: const Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+              onPressed: () {},
             ),
-            title: Text('Dart'),
+          ],
+        ),
+        body: ListTile(
+          leading: Checkbox(
+            value: agree,
+            onChanged: (bool? value) {
+              setState(() {
+                agree = value!;
+              });
+            },
           ),
-          ListTile(
-            leading: Radio<String>(
-              value: 'Kotlin',
-              groupValue: language,
-              onChanged: (String? value) {
-                setState(() {
-                  language = value;
-                  showSnackBar();
-                });
-              },
-            ),
-            title: Text('Kotlin'),
-          ),
-          ListTile(
-            leading: Radio<String>(
-              value: 'Swift',
-              groupValue: language,
-              onChanged: (String? value) {
-                setState(() {
-                  language = value;
-                  showSnackBar();
-                });
-              },
-            ),
-            title: const Text('Swift'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void showSnackBar() {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text('$language selected'),
-      duration: Duration(seconds: 1),
-    ));
+          title: Text('Agree / Disagree'),
+        ));
   }
 }
