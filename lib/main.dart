@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Oswald',
         primarySwatch: Colors.blue,
       ),
       home: FirstScreen(),
@@ -52,17 +53,10 @@ class _FirstScreenState extends State<FirstScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Image.asset(
-          'images/IMG_20211203_002025_891.jpg',
-          width: 200,
-          height: 200,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-      ),
+      body: const Center(
+          child: Text(
+        'Hello World',
+      )),
     );
   }
 }
