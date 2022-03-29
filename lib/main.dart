@@ -33,35 +33,36 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.white,
+          ),
+          onPressed: () {},
+        ),
+        title: const Text('First Screen'),
+        actions: <Widget>[
+          IconButton(
             icon: const Icon(
-              Icons.menu,
+              Icons.search,
               color: Colors.white,
             ),
             onPressed: () {},
           ),
-          title: const Text('First Screen'),
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-          ],
+        ],
+      ),
+      body: Center(
+        child: Image.asset(
+          'images/IMG_20211203_002025_891.jpg',
+          width: 200,
+          height: 200,
         ),
-        body: ListTile(
-          leading: Checkbox(
-            value: agree,
-            onChanged: (bool? value) {
-              setState(() {
-                agree = value!;
-              });
-            },
-          ),
-          title: Text('Agree / Disagree'),
-        ));
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
+    );
   }
 }
