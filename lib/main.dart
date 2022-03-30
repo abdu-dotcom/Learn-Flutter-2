@@ -16,47 +16,34 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Oswald',
         primarySwatch: Colors.blue,
       ),
-      home: FirstScreen(),
+      home: ScrollingScreen(),
     );
   }
 }
 
-class FirstScreen extends StatefulWidget {
-  const FirstScreen({Key? key}) : super(key: key);
-
-  @override
-  _FirstScreenState createState() => _FirstScreenState();
-}
-
-class _FirstScreenState extends State<FirstScreen> {
-  bool agree = false;
+class ScrollingScreen extends StatelessWidget {
+  final List<int> numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
-          onPressed: () {},
-        ),
-        title: const Text('First Screen'),
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              color: Colors.white,
+      body: ListView(
+        children: numberList.map((number) {
+          return Container(
+            height: 250,
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              border: Border.all(color: Colors.black),
             ),
-            onPressed: () {},
-          ),
-        ],
+            child: Center(
+              child: Text(
+                '$number',
+                style: TextStyle(fontSize: 50),
+              ),
+            ),
+          );
+        }).toList(),
       ),
-      body: const Center(
-          child: Text(
-        'Hello World',
-      )),
     );
   }
 }
