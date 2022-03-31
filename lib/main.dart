@@ -16,35 +16,57 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Oswald',
         primarySwatch: Colors.blue,
       ),
-      home: ScrollingScreen(),
+      home: Rainbow(),
     );
   }
 }
 
-class ScrollingScreen extends StatelessWidget {
-  final List<int> numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+class Rainbow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 250,
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                border: Border.all(color: Colors.black),
-              ),
-              child: Text(
-                '${numberList[index]}}',
-                style: TextStyle(fontSize: 50),
-              ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return Divider();
-          },
-          itemCount: numberList.length),
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.blue,
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.yellow,
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.red,
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Color.fromARGB(137, 85, 85, 85),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Color.fromARGB(255, 24, 116, 229),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Color.fromARGB(255, 164, 150, 19),
+          ),
+        ),
+        Expanded(
+          child: Container(
+            color: Color.fromARGB(255, 172, 164, 91),
+          ),
+        ),
+      ],
     );
   }
 }
