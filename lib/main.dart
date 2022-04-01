@@ -16,57 +16,89 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Oswald',
         primarySwatch: Colors.blue,
       ),
-      home: Rainbow(),
+      home: ExpandedFlexiblePage(),
     );
   }
 }
 
-class Rainbow extends StatelessWidget {
+class ExpandedFlexiblePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: Container(
-            color: Colors.red,
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                ExpandedWidget(),
+                FlexibleWidget(),
+              ],
+            ),
+            Row(
+              children: [
+                ExpandedWidget(),
+                ExpandedWidget(),
+              ],
+            ),
+            Row(
+              children: [
+                FlexibleWidget(),
+                FlexibleWidget(),
+              ],
+            ),
+            Row(
+              children: [
+                FlexibleWidget(),
+                ExpandedWidget(),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+    throw UnimplementedError();
+  }
+}
+
+class ExpandedWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.teal,
+          border: Border.all(color: Colors.white),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            'Expanded',
+            style: TextStyle(color: Colors.white, fontSize: 24),
           ),
         ),
-        Expanded(
-          child: Container(
-            color: Colors.blue,
+      ),
+    );
+  }
+}
+
+class FlexibleWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Flexible(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.tealAccent,
+          border: Border.all(color: Colors.white),
+        ),
+        child: const Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            'Flexible',
+            style: TextStyle(color: Colors.teal, fontSize: 24),
           ),
         ),
-        Expanded(
-          child: Container(
-            color: Colors.yellow,
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Colors.red,
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Color.fromARGB(137, 85, 85, 85),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Color.fromARGB(255, 24, 116, 229),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Color.fromARGB(255, 164, 150, 19),
-          ),
-        ),
-        Expanded(
-          child: Container(
-            color: Color.fromARGB(255, 172, 164, 91),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
